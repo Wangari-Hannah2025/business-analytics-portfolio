@@ -1,0 +1,13 @@
+import pandas as pd
+from sklearn.linear_model import LogisticRegression
+
+# Load customer data
+df = pd.read_csv("https://raw.githubusercontent.com/jeffprosise/Machine-Learning/main/Data/churn.csv")
+X = df[["Tenure", "MonthlyCharges"]]
+y = df["Churn"]
+
+# Train model (magic happens here)
+model = LogisticRegression().fit(X, y)
+
+# Predict: Will a customer with 5 months & €70 bill leave?
+print("Churn risk (Tenure=5, Bill=70):", model.predict([[5, 70]]))
